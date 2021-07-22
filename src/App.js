@@ -1,74 +1,52 @@
 import React, { Component } from "react";
+import Movies from "./components/Movies";
+import Series from "./components/Series";
+import Home from "./components/Home"
 
-import Movies from "./services/Movies";
-import styled from "styled-components";
-import Series from "./services/Series";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-class App extends Component {
-  state = {
-    filmes: [],
-    series: []
-  };
-
-  componentDidMount() {
-    this.getMovies();
-    this.getSeries();
-  }
-
-  getMovies = async () => {
-    const response = await Movies.get();
-
-    const posterFilmes = response.data.results.map((item) => {
-      return {
-        ...item,
-        poster_path: `https://image.tmdb.org/t/p/w500/${item.poster_path}`
-      };
-    });
-
-    this.setState({
-      filmes: posterFilmes
-    });
-  };
-
-  getSeries = async () => {
-    const response = await Series.get();
-    console.log(response.data.results);
-
-    const posterSeries = response.data.results.map((item) => {
-      return {
-        ...item,
-        poster_path: `https://image.tmdb.org/t/p/w500/${item.poster_path}`
-      };
-    });
-
-    this.setState({
-      series: posterSeries
-    });
-  };
-
-  render() {
-    return (
+class App extends Component{
+  render(){
+    return(
+    <Router>
       <div>
-        <h1>HomeFlix</h1>
-        <h2>Filmes</h2>
-        {this.state.filmes.map((item, index) => (
-          <div key={index}>
-            <h2>{item.title}</h2>
-            <img src={item.poster_path} alt={item.title} />
-            <p>{item.overview}</p>
-          </div>
-        ))}
-        <h2>Series</h2>
-        {this.state.series.map((item) => (
-          <div>
-            <h2>{item.name}</h2>
-            <img src={item.poster_path} alt={item.name} />
-            <p>{item.overview}</p>
-          </div>
-        ))}
+        <nav>
+          <ul>
+          <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/movies">Movies</Link>
+            </li>
+            <li>
+              <Link to="/series">Series</Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/movies">
+            <Movies />
+          </Route>
+          <Route path="/series">
+            <Series />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
       </div>
-    );
+    </Router>
+    )
   }
 }
 
 export default App;
+
