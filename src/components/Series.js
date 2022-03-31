@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
 import styled, { createGlobalStyle } from "styled-components";
-
 
 const GlobalStyle = createGlobalStyle`
 *{
