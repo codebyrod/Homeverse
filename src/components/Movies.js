@@ -127,7 +127,7 @@ class Movies extends Component  {
           <section>
           <GlobalStyle />
           <Header>
-            <Title>Filmes</Title>
+            <h1>Filmes</h1>
             <Ipt 
             onChange={this.handleChange} 
             type="text" 
