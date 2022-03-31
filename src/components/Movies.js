@@ -1,9 +1,6 @@
-
- // imports
 import React, { Component } from 'react'
 import axios from "axios";
 import styled, { createGlobalStyle } from "styled-components";
-
 
 const GlobalStyle = createGlobalStyle`
 *{
@@ -22,9 +19,6 @@ width: 97vw;
 display: flex;
 justify-content: space-between;
 padding: 1rem 1rem 1rem 3rem;
-`
-const Title = styled.h1`
-
 `
 
 const Ipt = styled.input`

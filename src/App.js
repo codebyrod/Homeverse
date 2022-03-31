@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Movies from "./components/Movies";
 import Series from "./components/Series";
 import Home from "./components/Home"
-import styled, {createGlobalStyle} from "styled-components";
+import styled from "styled-components";
 
 import {
   BrowserRouter as Router,
@@ -42,8 +42,6 @@ const Item = styled.li`
 font-size: 1.5rem;
 
 `
-
-
 
 class App extends Component{
   render(){
